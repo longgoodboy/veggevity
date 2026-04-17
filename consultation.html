@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tư vấn dinh dưỡng | Veggevity</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="utility-bar"><div class="utility-inner"><div class="utility-links"><span class="utility-chip">AI + Form MVP</span></div><div class="utility-actions"><span class="utility-chip">Lead capture + trust building</span></div></div></div>
+      <nav class="site-nav">
+        <div class="nav-inner">
+          <a class="brand-mark" href="index.html"><div class="brand-orb"></div><div class="brand-text"><strong>Veggevity</strong><span>Ăn chay đủ chất, mua sắm dễ hiểu</span></div></a>
+          <div class="nav-links"><a href="index.html">Trang chủ</a><a href="shop.html">Cửa hàng</a><a href="nutrition.html">Dinh dưỡng</a><a href="blog.html">Kiến thức</a><a class="active" href="consultation.html">Tư vấn</a><a href="about.html">Về Veggevity</a></div>
+          <a class="nav-cta" href="about.html">Liên hệ trực tiếp</a>
+        </div>
+      </nav>
+      <section class="page-header"><div class="page-header-inner"><span class="eyebrow" style="color: var(--primary-deep)">Consultation</span><h1>Tư vấn bắt đầu từ câu hỏi đơn giản, nhưng phải dẫn tới dữ liệu dùng được.</h1><p>Ở MVP, chatbot chỉ minh họa cách trả lời các câu hỏi phổ biến. Giá trị thật nằm ở form intake có cấu trúc để admin hoặc chuyên gia có thể hành động tiếp.</p></div></section>
+    </header>
+    <main>
+      <section>
+        <div class="consult-layout">
+          <div class="consult-panel">
+            <strong class="display" style="font-size: 1.7rem">Chatbot demo</strong>
+            <p style="color: var(--muted)">Thử hỏi về B12, protein, canxi hoặc người cao tuổi.</p>
+            <form data-chatbot-form>
+              <div class="field"><label for="chatbot-input">Câu hỏi của bạn</label><input id="chatbot-input" type="text" placeholder="Ví dụ: người ăn chay cần B12 như thế nào?" /></div>
+              <button class="button button-primary" type="submit">Nhận câu trả lời</button>
+            </form>
+            <div class="chatbot-response hidden" data-chatbot-response><strong>Phản hồi MVP</strong><p data-chatbot-text></p></div>
+          </div>
+          <div class="consult-panel">
+            <strong class="display" style="font-size: 1.7rem">Form tư vấn chuyên sâu</strong>
+            <form data-consult-form>
+              <div class="field"><label for="name">Họ tên</label><input id="name" name="name" type="text" required /></div>
+              <div class="form-grid">
+                <div class="field" style="flex: 1 1 12rem"><label for="age">Tuổi</label><input id="age" name="age" type="number" min="1" required /></div>
+                <div class="field" style="flex: 1 1 12rem"><label for="goal">Mục tiêu chính</label><input id="goal" name="goal" type="text" placeholder="Ví dụ: tăng đạm, hỗ trợ xương" required /></div>
+              </div>
+              <div class="field"><label for="habit">Thói quen ăn uống hiện tại</label><textarea id="habit" name="habit" rows="4" required placeholder="Mô tả ngắn về kiểu ăn, món thường dùng, điều đang lo lắng"></textarea></div>
+              <button class="button button-primary" type="submit">Lưu yêu cầu tư vấn</button>
+              <p data-consult-success style="color: var(--primary-deep)"></p>
+            </form>
+            <div class="history-list hidden" data-history-wrap><strong class="display" style="font-size: 1.35rem">Lịch sử trong trình duyệt</strong><div class="history-list" data-history-list></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <div><strong>Tư vấn MVP</strong><p>Chatbot và form đang ở mức prototype để khóa luồng người dùng trước khi nối dịch vụ thật.</p></div>
+          <div><strong>Liên quan</strong><a href="nutrition.html">Dinh dưỡng</a><br /><a href="shop.html">Cửa hàng</a></div>
+          <div><strong>Kênh hỗ trợ</strong><p>Hotline: 0909 888 120</p><p>Zalo: Veggevity Care</p></div>
+          <div><strong>Lưu ý</strong><p>Dữ liệu hiện chỉ lưu cục bộ trong trình duyệt để mô phỏng lịch sử.</p></div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

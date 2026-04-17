@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dinh dưỡng &amp; Sức khỏe | Veggevity</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="utility-bar"><div class="utility-inner"><div class="utility-links"><span class="utility-chip">Nutrition MVP</span><span class="utility-chip">Scientific trust signals</span></div><div class="utility-actions"><span class="utility-chip">Ưu tiên B12 · protein · canxi · sắt</span></div></div></div>
+      <nav class="site-nav">
+        <div class="nav-inner">
+          <a class="brand-mark" href="index.html"><div class="brand-orb"></div><div class="brand-text"><strong>Veggevity</strong><span>Ăn chay đủ chất, mua sắm dễ hiểu</span></div></a>
+          <div class="nav-links"><a href="index.html">Trang chủ</a><a href="shop.html">Cửa hàng</a><a class="active" href="nutrition.html">Dinh dưỡng</a><a href="blog.html">Kiến thức</a><a href="consultation.html">Tư vấn</a><a href="about.html">Về Veggevity</a></div>
+          <a class="nav-cta" href="consultation.html">Nhận gợi ý phù hợp</a>
+        </div>
+      </nav>
+      <section class="page-header"><div class="page-header-inner"><span class="eyebrow" style="color: var(--primary-deep)">Core Feature</span><h1>Dinh dưỡng là điểm khác biệt, không chỉ là nội dung phụ.</h1><p>Trang này minh họa cách Veggevity chuyển kiến thức hàn lâm thành quyết định thực tế: tra cứu nhanh, đọc khuyến nghị ngắn, rồi hành động qua shop hoặc tư vấn.</p></div></section>
+    </header>
+    <main>
+      <section>
+        <div class="nutrition-layout">
+          <div class="nutrition-panel">
+            <strong class="display" style="font-size: 1.8rem">Tra cứu nguyên liệu</strong>
+            <p style="color: var(--muted)">Thử: đậu hũ, nấm, rau dền, sữa hạt, đậu lăng, hạt chia.</p>
+            <form data-nutrition-form>
+              <div class="field"><label for="nutrition-search">Tên món / nguyên liệu</label><input id="nutrition-search" type="text" placeholder="Nhập nguyên liệu..." /></div>
+              <button class="button button-primary" type="submit">Xem phân tích</button>
+            </form>
+            <div class="tool-output hidden" data-nutrition-output>
+              <strong data-result-title>Kết quả</strong>
+              <div class="result-grid">
+                <div class="result-box" data-result-key="protein"><span>Protein</span><strong>--</strong></div>
+                <div class="result-box" data-result-key="b12"><span>B12</span><strong>--</strong></div>
+                <div class="result-box" data-result-key="calcium"><span>Canxi</span><strong>--</strong></div>
+                <div class="result-box" data-result-key="iron"><span>Sắt</span><strong>--</strong></div>
+              </div>
+              <p data-result-note></p>
+            </div>
+          </div>
+          <div class="visual-block reveal"></div>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div class="section-copy reveal"><div class="section-badge">Gợi ý thực đơn</div><h2>Cùng một nền tảng, nhưng không phải cùng một lời khuyên.</h2><p>Mỗi nhóm người dùng có vấn đề khác nhau. Thay vì một bài viết dài duy nhất, Veggevity nên tổ chức khuyến nghị theo tình huống và mức hiểu biết của người đọc.</p></div>
+          <div class="tab-row"><button class="tab active" type="button" data-suggestion-tab="elderly">Người cao tuổi</button><button class="tab" type="button" data-suggestion-tab="longterm">Ăn chay trường</button><button class="tab" type="button" data-suggestion-tab="bone">Loãng xương</button><button class="tab" type="button" data-suggestion-tab="sugar">Đường huyết</button></div>
+          <div class="suggestion-grid" data-suggestion-grid></div>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <div class="cta-band reveal">
+            <div><strong class="display">Cần lời khuyên cụ thể hơn?</strong><p>MVP chuyển người dùng sang tư vấn khi câu hỏi vượt ngoài phạm vi tra cứu nhanh.</p></div>
+            <div class="contact-actions"><a class="button button-primary" href="consultation.html">Mở tư vấn</a><a class="button button-secondary" href="shop.html">Xem món phù hợp</a></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <div><strong>Khung khoa học</strong><p>Nội dung được trình bày theo hướng dễ hiểu để hỗ trợ quyết định mua và ăn đúng cách.</p></div>
+          <div><strong>Tiếp theo</strong><a href="consultation.html">Tư vấn cá nhân</a><br /><a href="blog.html">Đọc thêm kiến thức</a></div>
+          <div><strong>Chủ đề chính</strong><p>Protein · B12 · Canxi · Sắt</p></div>
+          <div><strong>Lưu ý</strong><p>MVP minh họa hướng sản phẩm, không thay thế hướng dẫn chuyên môn trực tiếp.</p></div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

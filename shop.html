@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cửa hàng | Veggevity</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="utility-bar"><div class="utility-inner"><div class="utility-links"><span class="utility-chip">Shop MVP</span><span class="utility-chip">Nhãn dinh dưỡng dễ hiểu</span></div><div class="utility-actions"><span class="utility-chip">Giao nhanh nội thành</span></div></div></div>
+      <nav class="site-nav">
+        <div class="nav-inner">
+          <a class="brand-mark" href="index.html"><div class="brand-orb"></div><div class="brand-text"><strong>Veggevity</strong><span>Ăn chay đủ chất, mua sắm dễ hiểu</span></div></a>
+          <div class="nav-links"><a href="index.html">Trang chủ</a><a class="active" href="shop.html">Cửa hàng</a><a href="nutrition.html">Dinh dưỡng</a><a href="blog.html">Kiến thức</a><a href="consultation.html">Tư vấn</a><a href="about.html">Về Veggevity</a></div>
+          <a class="nav-cta" href="consultation.html">Cần tư vấn chọn món</a>
+        </div>
+      </nav>
+      <section class="page-header"><div class="page-header-inner"><span class="eyebrow" style="color: var(--primary-deep)">Shop</span><h1>Cửa hàng chay có ngữ cảnh dinh dưỡng.</h1><p>Bộ lọc không chỉ để bán nhanh hơn. Nó giúp người dùng tự tin hơn khi phải chọn món cho người lớn tuổi, bữa nhẹ hay khẩu phần cần kiểm soát năng lượng.</p></div></section>
+    </header>
+    <main>
+      <section>
+        <div class="shop-layout">
+          <aside class="filter-panel">
+            <strong class="display" style="font-size: 1.6rem">Lọc sản phẩm</strong>
+            <p style="color: var(--muted)">Các trường này mô phỏng logic mà WooCommerce có thể mở rộng sau này.</p>
+            <form data-shop-filters>
+              <div class="field"><label for="type">Loại món</label><select id="type" name="type"><option value="all">Tất cả</option><option value="meal">Bữa chính</option><option value="snack">Bữa phụ</option><option value="drink">Đồ uống</option><option value="combo">Combo</option></select></div>
+              <div class="field"><label for="price">Mức giá</label><select id="price" name="price"><option value="all">Tất cả</option><option value="low">Dưới 60.000đ</option><option value="mid">60.000đ - 100.000đ</option><option value="high">Trên 100.000đ</option></select></div>
+              <div class="field"><label for="prep">Thời gian chuẩn bị</label><select id="prep" name="prep"><option value="all">Tất cả</option><option value="fast">Dưới 15 phút</option><option value="medium">15 - 25 phút</option><option value="slow">Trên 25 phút</option></select></div>
+              <div class="field"><label><input type="checkbox" name="senior" /> Phù hợp người cao tuổi</label></div>
+              <div class="filter-row"><button class="button button-primary" type="submit">Áp dụng</button><button class="button button-ghost" type="button" data-reset-filters>Đặt lại</button></div>
+            </form>
+          </aside>
+          <div><div class="product-grid" data-product-grid></div></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <div><strong>Veggevity Shop</strong><p>MVP mô phỏng tầng duyệt sản phẩm, filter và badge trước khi nối WooCommerce.</p></div>
+          <div><strong>Đi tiếp</strong><a href="nutrition.html">Tra cứu dinh dưỡng</a><br /><a href="consultation.html">Tư vấn chọn món</a></div>
+          <div><strong>Hỗ trợ</strong><p>Hotline: 0909 888 120</p><p>Zalo: Veggevity Care</p></div>
+          <div><strong>Trạng thái</strong><p>Static MVP, chưa tích hợp checkout thực.</p></div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
