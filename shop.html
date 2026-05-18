@@ -37,7 +37,13 @@
             <a href="consultation.html">Tư vấn</a>
             <a href="about.html">Về Veggevity</a>
           </div>
-          <a class="nav-cta" href="consultation.html">Nhờ gợi ý chọn món</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="nav-cart-btn" id="openCartBtn">
+              🛒 Giỏ hàng
+              <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+            <a class="nav-cta" href="consultation.html">Nhờ gợi ý chọn món</a>
+          </div>
         </div>
       </nav>
       <section class="page-header">
@@ -128,6 +134,27 @@
         </div>
       </div>
     </footer>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+      <div class="cart-panel">
+        <div class="cart-header">
+          <h2>Giỏ hàng của bạn</h2>
+          <button class="cart-close" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-body" id="cartItemsContainer">
+          <!-- Cart items will be rendered here -->
+        </div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Tổng cộng:</span>
+            <span id="cartTotalPrice">0đ</span>
+          </div>
+          <button class="button button-primary" style="width: 100%;" id="checkoutBtn">Thanh toán</button>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
