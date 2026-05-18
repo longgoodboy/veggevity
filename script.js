@@ -641,6 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
   revealOnLoad();
   setupCart();
   setupAdmin();
+  setupCustomerOrders();
 });
 
 /* --- Cart Logic --- */
@@ -881,3 +882,57 @@ function renderAdminFeedbacks() {
     </tr>
   `).join('');
 }
+
+function setupCustomerOrders() {
+  const tbody = document.getElementById('customerOrderList');
+  if (!tbody) return;
+
+  const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
+  
+  if (orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--muted);">Bạn chưa có đơn hàng nào.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = orders.map(order => `
+    <tr>
+      <td><strong>${order.id}</strong></td>
+      <td style="color: var(--muted);">${order.date}</td>
+      <td style="color: var(--accent); font-weight: 600;">${order.total}</td>
+      <td>
+        <span class="badge" style="background: ${order.status === 'Hoàn thành' ? 'var(--surface-sage)' : 'rgba(242, 234, 218, 0.8)'};">${order.status}</span>
+      </td>
+      <td>
+        <button class="button button-ghost" style="padding: 0.3rem 0.6rem; min-height: auto;" onclick="showCustomerOrderDetails('${order.id}')">Xem</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+window.showCustomerOrderDetails = function(orderId) {
+  const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
+  const order = orders.find(o => o.id === orderId);
+  if (!order) return;
+
+  const content = document.getElementById('customerOrderDetailsContent');
+  if (!content) return;
+
+  let html = `
+    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line);">
+      <p><strong>Mã đơn hàng:</strong> ${order.id}</p>
+      <p><strong>Ngày đặt:</strong> ${order.date}</p>
+      <p><strong>Thanh toán:</strong> ${order.paymentMethod === 'COD' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản QR'}</p>
+      <p><strong>Trạng thái:</strong> ${order.status}</p>
+    </div>
+    <h3 style="margin-top: 0;">Sản phẩm:</h3>
+    <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+      ${order.items.map(i => `<li style="margin-bottom: 0.5rem;">${i.name} <strong>x${i.quantity}</strong> - <span style="color: var(--accent);">${i.price}</span></li>`).join('')}
+    </ul>
+    <div style="text-align: right; font-size: 1.25rem;">
+      <strong>Tổng tiền: <span style="color: var(--primary-deep);">${order.total}</span></strong>
+    </div>
+  `;
+
+  content.innerHTML = html;
+  document.getElementById('customerOrderModal').style.display = 'flex';
+};

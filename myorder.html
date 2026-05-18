@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đơn hàng của tôi | Veggevity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .myorder-layout {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a class="brand-mark" href="index.html">
+          <img class="brand-logo" src="images/logo.png" alt="Logo Veggevity" />
+          <div class="brand-text">
+            <strong>Veggevity</strong>
+            <span>Đơn hàng của bạn</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Về trang chủ</a>
+          <a href="shop.html">Cửa hàng</a>
+        </div>
+      </div>
+    </nav>
+    <section class="page-header" style="padding-bottom: 1rem;">
+      <div class="page-header-inner" style="max-width: 800px; margin: 0 auto;">
+        <h1>Lịch sử đơn hàng</h1>
+        <p>Theo dõi tiến trình và trạng thái các đơn hàng bạn đã đặt tại Veggevity.</p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section style="padding-top: 1rem; padding-bottom: 5rem;">
+      <div class="container myorder-layout tool-panel">
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Mã ĐH</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody id="customerOrderList">
+              <!-- Orders injected here via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="customerOrderModal" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(36, 37, 28, 0.8); z-index: 200; display: none; align-items: center; justify-content: center;">
+    <div class="tool-panel" style="max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative;">
+      <button onclick="document.getElementById('customerOrderModal').style.display='none'" style="position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted);">&times;</button>
+      <h2 style="margin-top: 0; color: var(--primary-deep);">Chi tiết đơn hàng</h2>
+      <div id="customerOrderDetailsContent" style="margin-top: 1rem;">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
