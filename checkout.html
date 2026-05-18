@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh toán | Veggevity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .checkout-layout {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .payment-methods {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .payment-method {
+      flex: 1;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--surface);
+    }
+    .payment-method.active {
+      border-color: var(--primary);
+      background: var(--surface-sage);
+    }
+    .payment-method input {
+      display: none;
+    }
+    #qrModal {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(36, 37, 28, 0.8);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    #qrModal.active {
+      display: flex;
+    }
+    .qr-content {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      max-width: 300px;
+    }
+    .qr-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a class="brand-mark" href="index.html">
+          <img class="brand-logo" src="images/logo.png" alt="Logo Veggevity" />
+          <div class="brand-text">
+            <strong>Veggevity</strong>
+            <span>Thanh toán an toàn</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="shop.html">Trở lại Cửa hàng</a>
+        </div>
+      </div>
+    </nav>
+    <section class="page-header" style="padding-bottom: 1rem;">
+      <div class="page-header-inner" style="max-width: 600px; margin: 0 auto;">
+        <h1>Hoàn tất đơn hàng</h1>
+        <p>Vui lòng nhập thông tin giao hàng của bạn.</p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section style="padding-top: 1rem;">
+      <div class="container checkout-layout">
+        <form id="checkoutForm" class="tool-panel">
+          <div class="field">
+            <label for="customerName">Họ và Tên</label>
+            <input type="text" id="customerName" name="name" required />
+          </div>
+          <div class="field">
+            <label for="customerPhone">Số điện thoại</label>
+            <input type="tel" id="customerPhone" name="phone" required />
+          </div>
+          <div class="field">
+            <label for="customerAddress">Địa chỉ giao hàng</label>
+            <textarea id="customerAddress" name="address" rows="3" required></textarea>
+          </div>
+          
+          <div class="field" style="margin-top: 1.5rem;">
+            <label>Phương thức thanh toán</label>
+            <div class="payment-methods">
+              <label class="payment-method active">
+                <input type="radio" name="payment" value="COD" checked>
+                Thanh toán khi nhận hàng (COD)
+              </label>
+              <label class="payment-method">
+                <input type="radio" name="payment" value="QR">
+                Chuyển khoản (Mã QR)
+              </label>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <strong>Tổng cộng: <span id="checkoutTotal" style="color: var(--primary-deep); font-size: 1.25rem;">0đ</span></strong>
+            <button type="submit" class="button button-primary">Đặt hàng</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="qrModal">
+    <div class="qr-content">
+      <h3 style="margin-top:0;">Quét mã để thanh toán</h3>
+      <!-- Using a placeholder image for the QR code -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ThanhToanVeggevity" alt="QR Code">
+      <p style="color: var(--muted); font-size: 0.9rem;">Hệ thống đang chờ xác nhận thanh toán...</p>
+      <p style="font-size: 0.85rem; color: var(--accent);">Vui lòng không đóng trang này.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Payment method selection logic
+      const paymentLabels = document.querySelectorAll('.payment-method');
+      paymentLabels.forEach(label => {
+        label.addEventListener('click', () => {
+          paymentLabels.forEach(l => l.classList.remove('active'));
+          label.classList.add('active');
+          label.querySelector('input').checked = true;
+        });
+      });
+
+      // Show total
+      const cart = JSON.parse(localStorage.getItem('veggevity-cart')) || [];
+      if (cart.length === 0) {
+        alert("Giỏ hàng trống!");
+        window.location.href = 'shop.html';
+        return;
+      }
+
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const priceNum = parseInt(item.price.replace(/\\D/g, ''));
+        totalPrice += priceNum * item.quantity;
+      });
+      document.getElementById('checkoutTotal').textContent = totalPrice.toLocaleString('vi-VN') + 'đ';
+
+      // Checkout submit logic
+      const form = document.getElementById('checkoutForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+        const customerName = document.getElementById('customerName').value;
+        const customerPhone = document.getElementById('customerPhone').value;
+        const customerAddress = document.getElementById('customerAddress').value;
+
+        const processOrder = () => {
+          const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
+          const newOrder = {
+            id: 'ORD-' + Date.now(),
+            date: new Date().toLocaleString('vi-VN'),
+            customerName,
+            customerPhone,
+            customerAddress,
+            paymentMethod,
+            items: cart,
+            total: document.getElementById('checkoutTotal').textContent,
+            status: 'Chờ xử lý'
+          };
+          
+          orders.unshift(newOrder);
+          localStorage.setItem('veggevity-orders', JSON.stringify(orders));
+          
+          localStorage.removeItem('veggevity-cart');
+          
+          alert("Đặt hàng thành công! Đơn hàng của bạn đã được ghi nhận.");
+          window.location.href = 'index.html';
+        };
+
+        if (paymentMethod === 'QR') {
+          const modal = document.getElementById('qrModal');
+          modal.classList.add('active');
+          setTimeout(() => {
+            modal.classList.remove('active');
+            processOrder();
+          }, 4000);
+        } else {
+          processOrder();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Veggevity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a class="brand-mark" href="index.html">
+          <img class="brand-logo" src="images/logo.png" alt="Logo Veggevity" />
+          <div class="brand-text">
+            <strong>Veggevity</strong>
+            <span>Admin Dashboard</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Về trang chủ</a>
+          <a href="shop.html">Cửa hàng</a>
+        </div>
+      </div>
+    </nav>
+    <section class="page-header" style="padding-bottom: 2rem;">
+      <div class="page-header-inner">
+        <span class="eyebrow">Quản trị</span>
+        <h1>Hệ thống quản lý nội bộ</h1>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section style="padding-top: 1rem;">
+      <div class="container admin-layout">
+        <aside class="admin-sidebar">
+          <div class="admin-nav">
+            <button class="active" data-admin-tab="orders">Quản lý Đơn hàng</button>
+            <button data-admin-tab="feedbacks">Phản hồi & Tư vấn</button>
+          </div>
+        </aside>
+        <div class="admin-content">
+          <div id="adminOrders" class="admin-section active tool-panel">
+            <h2>Đơn hàng gần đây</h2>
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Mã ĐH</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="adminOrdersList">
+                  <!-- Orders rendered here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="adminFeedbacks" class="admin-section tool-panel">
+            <h2>Lịch sử Yêu cầu Tư vấn</h2>
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Người gửi</th>
+                    <th>Nhu cầu</th>
+                    <th>Mục tiêu</th>
+                    <th>Lời nhắn</th>
+                    <th>Thời gian</th>
+                  </tr>
+                </thead>
+                <tbody id="adminFeedbacksList">
+                  <!-- Feedbacks rendered here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

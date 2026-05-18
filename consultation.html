@@ -1,153 +1,160 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tư vấn | Veggevity</title>
-    <meta name="description" content="Đặt câu hỏi nhanh với Ask Veggevity hoặc gửi form tư vấn để lưu lại nhu cầu dinh dưỡng và bữa ăn phù hợp." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <div class="utility-bar">
-        <div class="utility-inner">
-          <div><span class="utility-chip">Ask Veggevity</span><span class="utility-chip">Lead capture nhẹ nhàng</span></div>
-          <div><span class="utility-chip">Lưu lịch sử cục bộ</span></div>
-        </div>
-      </div>
-      <nav class="site-nav">
-        <div class="nav-inner">
-          <a class="brand-mark" href="index.html">
-            <img class="brand-logo" src="images/logo.png" alt="Logo Veggevity" />
-            <div class="brand-text">
-              <strong>Veggevity</strong>
-              <span>Ăn chay với sự rõ ràng, an tâm và chăm chút</span>
-            </div>
-          </a>
-          <div class="nav-links">
-            <a href="index.html">Trang chủ</a>
-            <a href="shop.html">Cửa hàng</a>
-            <a href="nutrition.html">Dinh dưỡng Kiến thức</a>
-            <a class="active" href="consultation.html">Tư vấn</a>
-            <a href="about.html">Về Veggevity</a>
-          </div>
-          <a class="nav-cta" href="about.html">Liên hệ trực tiếp</a>
-        </div>
-      </nav>
-      <section class="page-header">
-        <div class="page-header-inner">
-          <span class="eyebrow">Consultation</span>
-          <h1>Tư vấn bắt đầu từ một câu hỏi ngắn, rồi đi tiếp bằng thông tin đủ dùng.</h1>
-          <p>
-            Ask Veggevity chỉ là một trợ lý gợi mở đơn giản cho các chủ đề quen thuộc. Khi nhu cầu cụ thể hơn, form tư vấn giúp ghi lại mục tiêu và bối cảnh ăn uống để tiếp tục hỗ trợ.
-          </p>
-        </div>
-      </section>
-    </header>
-    <main>
-      <section>
-        <div class="consult-layout">
-          <div class="consult-panel reveal">
-            <strong class="display" style="font-size: 1.8rem">Quick Question</strong>
-            <p style="color: var(--muted)">
-              Bạn có thể thử các câu hỏi như: “Người ăn chay nên lấy B12 từ đâu?”, “Món nào phù hợp người lớn tuổi?”, “Bữa chay có đủ protein không?” hoặc “Tôi nên ăn gì để hỗ trợ xương?”.
-            </p>
-            <form data-chatbot-form>
-              <div class="field">
-                <label for="chatbot-input">Câu hỏi của bạn</label>
-                <input id="chatbot-input" type="text" placeholder="Ví dụ: người ăn chay cần B12 như thế nào?" />
-              </div>
-              <button class="button button-primary" type="submit">Nhận gợi ý nhanh</button>
-            </form>
-            <div class="chatbot-response hidden" data-chatbot-response>
-              <strong>Gợi ý từ Ask Veggevity</strong>
-              <p data-chatbot-text></p>
-            </div>
-            <div class="note-box" style="margin-top: 1rem">
-              Ask Veggevity không phải hệ thống tư vấn y khoa hay AI chẩn đoán. Đây là lớp giao tiếp mẫu để minh họa cách thương hiệu hướng người dùng sang hỗ trợ phù hợp hơn.
-            </div>
-          </div>
 
-          <div class="consult-panel reveal">
-            <strong class="display" style="font-size: 1.8rem">Consultation Form</strong>
-            <form data-consult-form>
-              <div class="field">
-                <label for="name">Họ tên</label>
-                <input id="name" name="name" type="text" required />
-              </div>
-              <div class="form-grid">
-                <div class="field" style="flex: 1 1 12rem">
-                  <label for="age">Tuổi</label>
-                  <input id="age" name="age" type="number" min="1" required />
-                </div>
-                <div class="field" style="flex: 1 1 12rem">
-                  <label for="goal">Mục tiêu</label>
-                  <input id="goal" name="goal" type="text" placeholder="Ví dụ: tăng đạm, hỗ trợ xương" required />
-                </div>
-              </div>
-              <div class="field">
-                <label for="eating-pattern">Kiểu ăn hiện tại</label>
-                <input id="eating-pattern" name="eatingPattern" type="text" placeholder="Ví dụ: ăn chay trường, ăn chay 3 ngày/tuần" required />
-              </div>
-              <div class="field">
-                <label for="notes">Ghi chú thêm</label>
-                <textarea
-                  id="notes"
-                  name="notes"
-                  rows="4"
-                  placeholder="Mô tả ngắn về món thường ăn, điều bạn đang băn khoăn hoặc người bạn đang mua cho."
-                  required
-                ></textarea>
-              </div>
-              <div class="field">
-                <label for="contact">Số điện thoại hoặc email (không bắt buộc)</label>
-                <input id="contact" name="contact" type="text" placeholder="Ví dụ: 0909 888 120 hoặc hello@veggevity.vn" />
-              </div>
-              <button class="button button-primary" type="submit">Lưu yêu cầu tư vấn</button>
-              <p data-consult-success style="color: var(--primary-deep)"></p>
-            </form>
-            <div class="history-list hidden" data-history-wrap>
-              <strong class="display" style="font-size: 1.35rem">Lịch sử lưu trong trình duyệt</strong>
-              <div class="history-list" data-history-list></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tư vấn | Veggevity</title>
+  <meta name="description"
+    content="Đặt câu hỏi nhanh với Ask Veggevity hoặc gửi form tư vấn để lưu lại nhu cầu dinh dưỡng và bữa ăn phù hợp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <div class="utility-bar">
+      <div class="utility-inner">
+        <div><span class="utility-chip">Ask Veggevity</span><span class="utility-chip">Lead capture nhẹ nhàng</span>
+        </div>
+        <div><span class="utility-chip">Lưu lịch sử cục bộ</span></div>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a class="brand-mark" href="index.html">
+          <img class="brand-logo" src="images/logo.png" alt="Logo Veggevity" />
+          <div class="brand-text">
+            <strong>Veggevity</strong>
+            <span>Ăn chay với sự rõ ràng, an tâm và chăm chút</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Trang chủ</a>
+          <a href="shop.html">Cửa hàng</a>
+          <a href="nutrition.html">Dinh dưỡng </a>
+          <a class="active" href="consultation.html">Tư vấn</a>
+          <a href="about.html">Về Veggevity</a>
+        </div>
+        <a class="nav-cta" href="about.html">Liên hệ trực tiếp</a>
+      </div>
+    </nav>
+    <section class="page-header">
+      <div class="page-header-inner">
+        <span class="eyebrow">Consultation</span>
+        <h1>Tư vấn bắt đầu từ một câu hỏi ngắn, rồi đi tiếp bằng thông tin đủ dùng.</h1>
+        <p>
+          Ask Veggevity chỉ là một trợ lý gợi mở đơn giản cho các chủ đề quen thuộc. Khi nhu cầu cụ thể hơn, form tư vấn
+          giúp ghi lại mục tiêu và bối cảnh ăn uống để tiếp tục hỗ trợ.
+        </p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section>
+      <div class="consult-layout">
+        <div class="consult-panel reveal">
+          <strong class="display" style="font-size: 1.8rem">Quick Question</strong>
+          <p style="color: var(--muted)">
+            Bạn có thể thử các câu hỏi như: “Người ăn chay nên lấy B12 từ đâu?”, “Món nào phù hợp người lớn tuổi?”, “Bữa
+            chay có đủ protein không?” hoặc “Tôi nên ăn gì để hỗ trợ xương?”.
+          </p>
+          <form data-chatbot-form>
+            <div class="field">
+              <label for="chatbot-input">Câu hỏi của bạn</label>
+              <input id="chatbot-input" type="text" placeholder="Ví dụ: người ăn chay cần B12 như thế nào?" />
             </div>
+            <button class="button button-primary" type="submit">Nhận gợi ý nhanh</button>
+          </form>
+          <div class="chatbot-response hidden" data-chatbot-response>
+            <strong>Gợi ý từ Ask Veggevity</strong>
+            <p data-chatbot-text></p>
+          </div>
+          <div class="note-box" style="margin-top: 1rem">
+            Ask Veggevity không phải hệ thống tư vấn y khoa hay AI chẩn đoán. Đây là lớp giao tiếp mẫu để minh họa cách
+            thương hiệu hướng người dùng sang hỗ trợ phù hợp hơn.
           </div>
         </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="footer-shell">
-        <div class="footer-grid">
-          <div>
-            <strong>Ask Veggevity</strong>
-            <p>Một lớp tư vấn nhẹ để người dùng thấy thương hiệu luôn sẵn sàng đồng hành trước khi họ phải tìm câu trả lời ở nơi khác.</p>
+
+        <div class="consult-panel reveal">
+          <strong class="display" style="font-size: 1.8rem">Consultation Form</strong>
+          <form data-consult-form>
+            <div class="field">
+              <label for="name">Họ tên</label>
+              <input id="name" name="name" type="text" required />
+            </div>
+            <div class="form-grid">
+              <div class="field" style="flex: 1 1 12rem">
+                <label for="age">Tuổi</label>
+                <input id="age" name="age" type="number" min="1" required />
+              </div>
+              <div class="field" style="flex: 1 1 12rem">
+                <label for="goal">Mục tiêu</label>
+                <input id="goal" name="goal" type="text" placeholder="Ví dụ: tăng đạm, hỗ trợ xương" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="eating-pattern">Kiểu ăn hiện tại</label>
+              <input id="eating-pattern" name="eatingPattern" type="text"
+                placeholder="Ví dụ: ăn chay trường, ăn chay 3 ngày/tuần" required />
+            </div>
+            <div class="field">
+              <label for="notes">Ghi chú thêm</label>
+              <textarea id="notes" name="notes" rows="4"
+                placeholder="Mô tả ngắn về món thường ăn, điều bạn đang băn khoăn hoặc người bạn đang mua cho."
+                required></textarea>
+            </div>
+            <div class="field">
+              <label for="contact">Số điện thoại hoặc email (không bắt buộc)</label>
+              <input id="contact" name="contact" type="text"
+                placeholder="Ví dụ: 0909 888 120 hoặc hello@veggevity.vn" />
+            </div>
+            <button class="button button-primary" type="submit">Lưu yêu cầu tư vấn</button>
+            <p data-consult-success style="color: var(--primary-deep)"></p>
+          </form>
+          <div class="history-list hidden" data-history-wrap>
+            <strong class="display" style="font-size: 1.35rem">Lịch sử lưu trong trình duyệt</strong>
+            <div class="history-list" data-history-list></div>
           </div>
-          <div>
-            <strong>Liên quan</strong>
-            <a href="nutrition.html">Dinh dưỡng Kiến thức</a><br />
-            <a href="shop.html">Cửa hàng</a>
-          </div>
-          <div>
-            <strong>Kênh hỗ trợ</strong>
-            <p>Hotline: 0909 888 120</p>
-            <p>Zalo: Veggevity Care</p>
-          </div>
-          <div>
-            <strong>Lưu ý</strong>
-            <p>Dữ liệu hiện được lưu cục bộ trong trình duyệt để mô phỏng lịch sử chăm sóc khách hàng và quá trình theo dõi nhu cầu.</p>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>© 2026 Veggevity</span>
-          <span>Keyword-based assistant and structured intake form</span>
         </div>
       </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-shell">
+      <div class="footer-grid">
+        <div>
+          <strong>Ask Veggevity</strong>
+          <p>Một lớp tư vấn nhẹ để người dùng thấy thương hiệu luôn sẵn sàng đồng hành trước khi họ phải tìm câu trả lời
+            ở nơi khác.</p>
+        </div>
+        <div>
+          <strong>Liên quan</strong>
+          <a href="nutrition.html">Dinh dưỡng Kiến thức</a><br />
+          <a href="shop.html">Cửa hàng</a>
+        </div>
+        <div>
+          <strong>Kênh hỗ trợ</strong>
+          <p>Hotline: 0909 888 120</p>
+          <p>Zalo: Veggevity Care</p>
+        </div>
+        <div>
+          <strong>Lưu ý</strong>
+          <p>Dữ liệu hiện được lưu cục bộ trong trình duyệt để mô phỏng lịch sử chăm sóc khách hàng và quá trình theo
+            dõi nhu cầu.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Veggevity</span>
+        <span>Keyword-based assistant and structured intake form</span>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -218,7 +218,10 @@ function createProductCard(product) {
         ${product.badges.map((badge) => `<span class="badge">${badge}</span>`).join("")}
         ${product.seniorFriendly ? `<span class="badge">Phù hợp người cao tuổi</span>` : ""}
       </div>
-      <a class="button button-secondary" href="consultation.html?meal=${encodeURIComponent(product.name)}">Hỏi về món này</a>
+      <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+        <button class="button button-primary" onclick="addToCart(${product.id})" style="flex: 1;">Thêm vào giỏ</button>
+        <a class="button button-secondary" href="consultation.html?meal=${encodeURIComponent(product.name)}" style="flex: 1;">Hỏi về món này</a>
+      </div>
     </article>
   `;
 }
@@ -636,4 +639,214 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMealSlider();
   renderBlogPreview();
   revealOnLoad();
+  setupCart();
+  setupAdmin();
 });
+
+/* --- Cart Logic --- */
+let cart = JSON.parse(localStorage.getItem("veggevity-cart")) || [];
+
+function saveCart() {
+  localStorage.setItem("veggevity-cart", JSON.stringify(cart));
+}
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+
+  const existing = cart.find(item => item.id === productId);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+  
+  saveCart();
+  updateCartUI();
+  
+  document.getElementById('cartOverlay')?.classList.add('open');
+}
+
+function updateCartQuantity(productId, delta) {
+  const item = cart.find(i => i.id === productId);
+  if (item) {
+    item.quantity += delta;
+    if (item.quantity <= 0) {
+      cart = cart.filter(i => i.id !== productId);
+    }
+    saveCart();
+    updateCartUI();
+  }
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(i => i.id !== productId);
+  saveCart();
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const badge = document.getElementById('cartBadge');
+  const container = document.getElementById('cartItemsContainer');
+  const totalEl = document.getElementById('cartTotalPrice');
+  
+  if (!badge) return;
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  badge.textContent = totalItems;
+
+  if (container) {
+    if (cart.length === 0) {
+      container.innerHTML = '<p style="color: var(--muted); text-align: center; margin-top: 2rem;">Giỏ hàng của bạn đang trống.</p>';
+      totalEl.textContent = '0đ';
+      return;
+    }
+
+    let totalPrice = 0;
+    container.innerHTML = cart.map(item => {
+      const priceNum = parseInt(item.price.replace(/\\D/g, ''));
+      totalPrice += priceNum * item.quantity;
+      return `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-info">
+            <strong>${item.name}</strong>
+            <div class="cart-item-price">${item.price}</div>
+            <div class="cart-item-controls">
+              <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
+              <span>${item.quantity}</span>
+              <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
+              <button onclick="removeFromCart(${item.id})" style="margin-left: auto; color: red;">X</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    totalEl.textContent = totalPrice.toLocaleString('vi-VN') + 'đ';
+  }
+}
+
+function setupCart() {
+  const openBtn = document.getElementById('openCartBtn');
+  const closeBtn = document.getElementById('closeCartBtn');
+  const overlay = document.getElementById('cartOverlay');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  if (openBtn && overlay) {
+    openBtn.addEventListener('click', () => overlay.classList.add('open'));
+  }
+  
+  if (closeBtn && overlay) {
+    closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('open');
+      }
+    });
+  }
+
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert("Giỏ hàng trống!");
+        return;
+      }
+      window.location.href = 'checkout.html';
+    });
+  }
+
+  updateCartUI();
+}
+
+/* --- Admin Logic --- */
+function setupAdmin() {
+  const adminTabs = document.querySelectorAll('[data-admin-tab]');
+  if (!adminTabs.length) return;
+
+  adminTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      adminTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active'));
+      const targetId = tab.dataset.adminTab === 'orders' ? 'adminOrders' : 'adminFeedbacks';
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+
+  renderAdminOrders();
+  renderAdminFeedbacks();
+}
+
+function renderAdminOrders() {
+  const tbody = document.getElementById('adminOrdersList');
+  if (!tbody) return;
+
+  const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
+  
+  if (orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted);">Chưa có đơn hàng nào</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = orders.map(order => `
+    <tr>
+      <td><strong>${order.id}</strong></td>
+      <td style="color: var(--muted);">${order.date}</td>
+      <td>
+        ${order.customerName}<br>
+        <span style="font-size:0.8rem; color:var(--muted)">${order.customerPhone}</span>
+      </td>
+      <td style="color: var(--accent); font-weight: 600;">${order.total}</td>
+      <td>
+        <select onchange="updateOrderStatus('${order.id}', this.value)" style="padding: 0.3rem; border-radius: 4px; border: 1px solid var(--line);">
+          <option value="Chờ xử lý" ${order.status === 'Chờ xử lý' ? 'selected' : ''}>Chờ xử lý</option>
+          <option value="Đang giao" ${order.status === 'Đang giao' ? 'selected' : ''}>Đang giao</option>
+          <option value="Hoàn thành" ${order.status === 'Hoàn thành' ? 'selected' : ''}>Hoàn thành</option>
+          <option value="Đã hủy" ${order.status === 'Đã hủy' ? 'selected' : ''}>Đã hủy</option>
+        </select>
+      </td>
+      <td>
+        <button class="button button-ghost" style="padding: 0.3rem 0.6rem; min-height: auto;" onclick="alert('Chi tiết: ' + '${order.items.map(i => i.name + ' x' + i.quantity).join(', ')}')">Xem</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+window.updateOrderStatus = function(orderId, newStatus) {
+  const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
+  const order = orders.find(o => o.id === orderId);
+  if (order) {
+    order.status = newStatus;
+    localStorage.setItem('veggevity-orders', JSON.stringify(orders));
+  }
+};
+
+function renderAdminFeedbacks() {
+  const tbody = document.getElementById('adminFeedbacksList');
+  if (!tbody) return;
+
+  const feedbacks = JSON.parse(localStorage.getItem('veggevity-consult-history')) || [];
+  
+  if (feedbacks.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--muted);">Chưa có yêu cầu tư vấn nào</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = feedbacks.map(fb => `
+    <tr>
+      <td>
+        <strong>${fb.name}</strong><br/>
+        <span style="font-size: 0.8rem; color: var(--muted);">${fb.contact || 'Không có liên hệ'}</span>
+      </td>
+      <td>${fb.eatingPattern}</td>
+      <td>${fb.goal}</td>
+      <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${fb.notes}">${fb.notes || '-'}</td>
+      <td style="color: var(--muted); font-size: 0.9rem;">${fb.time}</td>
+    </tr>
+  `).join('');
+}
