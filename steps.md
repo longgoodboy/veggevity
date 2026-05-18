@@ -1,358 +1,371 @@
 # Veggevity Execution Steps
 
-## Phase 1. Discovery And Direction
-
-### Step 1
-Review the product requirements and reference material.
-
-Output:
-- confirm business goals
-- confirm target users
-- confirm MVP page scope
-
-Status:
-- completed
-
-### Step 2
-Define the initial website plan and page structure.
-
-Output:
-- sitemap
-- feature list
-- content direction
-- implementation assumptions
-
-Status:
-- completed
-
-## Phase 2. Prototype
-
-### Step 3
-Create the shared visual system.
-
-Output:
-- color system
-- typography rules
-- spacing rules
-- reusable UI patterns
-
-Status:
-- completed
-
-### Step 4
-Build the homepage prototype.
-
-Output:
-- hero
-- value proposition
-- featured products
-- nutrition teaser
-- testimonials
-- blog preview
-- final CTA
-
-Status:
-- completed
-
-### Step 5
-Build the shop prototype.
-
-Output:
-- product grid
-- filter controls
-- nutrition badges
-
-Status:
-- completed
-
-### Step 6
-Build the nutrition prototype.
-
-Output:
-- nutrition lookup
-- meal suggestion sections
-- CTA to consultation
-
-Status:
-- completed
-
-### Step 7
-Build the blog, consultation, and about/contact prototypes.
-
-Output:
-- article grid
-- chatbot demo
-- consultation form
-- about section
-- contact section
-
-Status:
-- completed
-
-### Step 8
-Verify the prototype locally.
-
-Output:
-- pages load
-- shared script works
-- local preview confirmed
-
-Status:
-- completed
-
-## Phase 3. Production Build Preparation
-
-### Step 9
-Create the WordPress implementation blueprint.
-
-Output:
-- stack choices
-- plugin list
-- template list
-- CMS/data model
-- execution order
-
-Status:
-- completed
-
-### Step 10
-Set up the real WordPress project.
-
-Output:
-- WordPress installed
-- theme selected
-- required plugins installed
-- permalinks and base settings configured
-- fallback content-entry workbook prepared while WordPress runtime is still unavailable in this repo
-
-Status:
-- next
-
-Implementation note:
-- A repo-side fallback for this step is now available in [content-entry-workbook.md](/D:/code/appDuong/content-entry-workbook.md), but Step 10 is not complete until WordPress is actually provisioned.
-- A WordPress-ready code scaffold now exists under [wp-content](/D:/code/appDuong/wp-content), but this machine still does not have `php`, `composer`, or `wp-cli`, so the real install/runtime portion of Step 10 remains blocked.
-
-### Step 11
-Configure the design system in WordPress.
-
-Output:
-- global colors
-- typography
-- buttons
-- container widths
-- reusable Elementor styles
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side setup spec for this step is now available in [wordpress-design-system-setup.md](/D:/code/appDuong/wordpress-design-system-setup.md), but Step 11 is not complete until those values are configured in a real WordPress + Elementor environment.
-- The base theme scaffold now exists in [wp-content/themes/veggevity](/D:/code/appDuong/wp-content/themes/veggevity), including shared tokens and header/footer styling, but the Elementor global design system is still not applied in a running WordPress site.
-
-### Step 12
-Create the CMS structure.
-
-Output:
-- site settings
-- product extra fields
-- testimonial structure
-- nutrition data structure
-- blog taxonomy
-- consultation form fields
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side schema spec for this step is now available in [wordpress-cms-structure.md](/D:/code/appDuong/wordpress-cms-structure.md), but Step 12 is not complete until those structures are created in WordPress, WooCommerce, ACF, and the selected forms plugin.
-- A code scaffold now exists in [wp-content/plugins/veggevity-core/veggevity-core.php](/D:/code/appDuong/wp-content/plugins/veggevity-core/veggevity-core.php), registering the core CPTs, taxonomies, options page, and local ACF field groups.
-
-## Phase 4. WordPress Build
-
-### Step 13
-Build global templates.
-
-Output:
-- header template
-- footer template
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side build spec for this step is now available in [wordpress-global-templates.md](/D:/code/appDuong/wordpress-global-templates.md), but Step 13 is not complete until the header and footer are actually built and assigned in WordPress/Elementor.
-- A working theme-level scaffold for shared templates now exists in [header.php](/D:/code/appDuong/wp-content/themes/veggevity/header.php) and [footer.php](/D:/code/appDuong/wp-content/themes/veggevity/footer.php), but it has not yet been activated in a running WordPress environment.
-
-### Step 14
-Build the homepage in WordPress.
-
-Output:
-- production homepage matching the approved prototype structure
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side homepage build spec for this step is now available in [wordpress-homepage-build.md](/D:/code/appDuong/wordpress-homepage-build.md), but Step 14 is not complete until the homepage is actually built and assigned in WordPress.
-
-### Step 15
-Build the WooCommerce shop templates.
-
-Output:
-- shop archive
-- single product template
-- nutrition labels and supporting fields
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side WooCommerce build spec for this step is now available in [wordpress-shop-build.md](/D:/code/appDuong/wordpress-shop-build.md), but Step 15 is not complete until the archive and single product templates are actually built in WordPress/WooCommerce.
-
-### Step 16
-Build the nutrition page and lookup tool.
-
-Output:
-- page layout
-- nutrition lookup logic
-- audience-based recommendation sections
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side build spec for this step is now available in [wordpress-nutrition-build.md](/D:/code/appDuong/wordpress-nutrition-build.md), but Step 16 is not complete until the Nutrition page and lookup logic are actually built and working in WordPress.
-
-### Step 17
-Build the blog templates.
-
-Output:
-- blog archive
-- single post layout
-- CTA blocks
-
-Status:
-- in progress
-
-Implementation note:
-- A repo-side build spec for this step is now available in [wordpress-blog-build.md](/D:/code/appDuong/wordpress-blog-build.md), but Step 17 is not complete until the archive and single post templates are actually built in WordPress.
-
-### Step 18
-Build the consultation workflow.
-
-Output:
-- chatbot embed
-- working consultation form
-- admin notifications
-
-Status:
-- pending
-
-### Step 19
-Build the about/contact page.
-
-Output:
-- story section
-- expert/team section
-- contact details
-- contact form
-
-Status:
-- pending
-
-## Phase 5. Content And Integration
-
-### Step 20
-Enter real content.
-
-Output:
-- real copy
-- product data
-- testimonials
-- expert bios
-- blog posts
-- contact details
-
-Status:
-- pending
-
-Implementation note:
-- Use [content-entry-workbook.md](/D:/code/appDuong/content-entry-workbook.md) when the WordPress runtime is available.
-
-### Step 21
-Connect production integrations.
-
-Output:
-- WooCommerce checkout
-- form email delivery
-- chatbot service
-- analytics
-- SEO configuration
-
-Status:
-- pending
-
-Implementation note:
-- This remains blocked until WordPress, WooCommerce, forms, and chatbot plugins are running. Use [wordpress-runtime-later-guide.md](/D:/code/appDuong/wordpress-runtime-later-guide.md) for the deferred execution sequence.
-
-## Phase 6. QA And Launch
-
-### Step 22
-Run functional QA.
-
-Output:
-- navigation tested
-- forms tested
-- filters tested
-- lookup tested
-- cart flow tested
-
-Status:
-- pending
-
-Implementation note:
-- This remains blocked until the site is running in WordPress. Use [wordpress-runtime-later-guide.md](/D:/code/appDuong/wordpress-runtime-later-guide.md) as the later execution guide.
-
-### Step 23
-Run UX and mobile QA.
-
-Output:
-- readability check
-- mobile layout check
-- older-user readability review
-- CTA visibility check
-
-Status:
-- pending
-
-Implementation note:
-- This remains blocked until the site is running in WordPress. Use [wordpress-runtime-later-guide.md](/D:/code/appDuong/wordpress-runtime-later-guide.md) as the later execution guide.
-
-### Step 24
-Run launch preparation.
-
-Output:
-- metadata check
-- performance cleanup
-- final review
-- deployment readiness
-
-Status:
-- pending
-
-Implementation note:
-- This remains blocked until the production build is running and testable. Use [wordpress-runtime-later-guide.md](/D:/code/appDuong/wordpress-runtime-later-guide.md) as the later execution guide.
-
-## Phase 7. Post-Launch
-
-### Step 25
-Monitor and improve.
-
-Output:
-- analytics review
-- SEO content expansion
-- UX adjustments
-- feature roadmap updates
-
-Status:
-- later
+## Current Project Status
+
+- Current phase: `Phase 11. Run Functional QA`
+- Overall state:
+  the planning rewrite is complete, the static prototype redesign is largely implemented, and most feature-oriented phases are substantially built
+- Main focus before final handoff:
+  run a complete functional QA pass now that the content integrity cleanup has been completed
+
+## Phase Status Overview
+
+| Phase | Status | Notes |
+|---|---|---|
+| 1. Lock Scope And Baseline | Completed | `plan.md` and `steps.md` now reflect the code-only static direction and remove WordPress from active scope. |
+| 2. Fix Content Integrity And Encoding | Completed | Live HTML files and centralized JS content were rewritten to remove mojibake and normalize Vietnamese text. |
+| 3. Refine Shared Navigation, Footer, And Brand Tokens | Completed | Shared shell, botanical styling, logo usage, and responsive CSS are already implemented. |
+| 4. Refine Homepage Messaging And Flow | Completed | Homepage sections, CTAs, and content structure are already rebuilt. |
+| 5. Upgrade Shop Experience | Completed | Image-backed product cards, filters, reset behavior, and consultation CTA are implemented. |
+| 6. Upgrade Nutrition Experience | Completed | Lookup, aliases, meal tabs, disclaimer, and nutrition reading section are implemented. |
+| 7. Upgrade Knowledge / Blog Experience | Completed | Editorial blog layout, category chips, card metadata, and CTA flow are implemented. |
+| 8. Upgrade Consultation Experience | Completed | `Ask Veggevity` flow, chatbot topics, structured form, and local history are implemented. |
+| 9. Refine About / Contact Experience | Completed | Brand story, philosophy, team cards, contact placeholders, and contact surface are implemented. |
+| 10. Clean Up Shared Data And Rendering Logic | Completed | Shared data and rendering remain centralized in `script.js` and are now text-clean. |
+| 11. Run Functional QA | In Progress | The next active step is a full browser-style QA pass across all preserved features. |
+| 12. Final Content And Consistency Pass | Partially Completed | Legacy platform wording is mostly removed; final polish still depends on QA results. |
+
+## Phase 1. Lock Scope And Baseline
+
+### Status
+Completed
+
+### Goal
+Establish the active implementation scope from the PRD and protect existing working behavior before any further page-level changes.
+
+### Files Involved
+- `plan.md`
+- `steps.md`
+- `veggevity_prd_code_only_en.md`
+
+### Completed Work
+- Confirmed the active project direction is static HTML, CSS, and JavaScript only
+- Rewrote `plan.md` as the master implementation plan
+- Rewrote `steps.md` as the phased execution checklist
+- Removed WordPress, WooCommerce, and Elementor from active implementation scope in planning
+
+### Must Preserve
+- Existing multi-page structure
+- Existing working interactions and shared layout
+
+### Verification Checks
+- `plan.md` and `steps.md` reflect the same scope
+- No active plan text treats WordPress-related tooling as part of implementation
+
+## Phase 2. Fix Content Integrity And Encoding
+
+### Status
+Completed
+
+### Goal
+Make all live Vietnamese text readable and consistent across static markup and JavaScript-rendered content.
+
+### Files Involved
+- `index.html`
+- `shop.html`
+- `nutrition.html`
+- `blog.html`
+- `consultation.html`
+- `about.html`
+- `script.js`
+
+### Completed Work
+- Rewrote the live page files with clean Vietnamese UTF-8 content
+- Rewrote centralized content in `script.js` to remove mojibake from product data, nutrition data, blog data, chatbot text, and local history labels
+- Verified by targeted repository scan that common mojibake sequences are no longer present in the tracked website files
+
+### Must Preserve
+- Existing page structure
+- Existing interaction logic and local data model
+
+### Verification Checks
+- Vietnamese text is readable in both static HTML and JS-driven UI
+- Browser-visible content no longer shows broken accent characters
+
+## Phase 3. Refine Shared Navigation, Footer, And Brand Tokens
+
+### Status
+Completed
+
+### Goal
+Make the shared shell consistent with the botanical editorial direction and the PRD design system.
+
+### Files Involved
+- `styles.css`
+- All page HTML files
+
+### Completed Work
+- Shared navigation and footer are implemented across pages
+- Logo usage is consistent across the shared shell
+- Botanical color tokens, serif-led typography, button patterns, card styling, and responsive behavior are implemented in `styles.css`
+
+### Must Preserve
+- Shared navigation
+- Shared footer
+- Responsive behavior
+
+### Verification Checks
+- All pages share the same shell structure and visual system
+- Navigation and footer remain intact at desktop and mobile widths
+
+## Phase 4. Refine Homepage Messaging And Flow
+
+### Status
+Completed
+
+### Goal
+Make the homepage a clearer entry point into Veggevity's three-part offer: shop, learn, and ask.
+
+### Files Involved
+- `index.html`
+- `styles.css`
+- `script.js`
+
+### Completed Work
+- Homepage hero was redesigned
+- Starter-guide framing was added
+- Value cards, featured products, nutrition teaser, starter reading, trust notes, and final CTA are present
+- CTA paths connect the homepage to shop, nutrition, and consultation
+
+### Must Preserve
+- Featured product preview
+- Nutrition teaser
+- Blog preview
+- Trust-note/testimonial-style section
+- Final CTA
+
+### Verification Checks
+- Homepage clearly communicates what Veggevity is and what users should do next
+- Main CTA paths lead correctly to shop, nutrition, and consultation
+
+## Phase 5. Upgrade Shop Experience
+
+### Status
+Completed
+
+### Goal
+Keep browsing simple while presenting products with stronger nutrition context and imagery.
+
+### Files Involved
+- `shop.html`
+- `script.js`
+- `styles.css`
+- Product image assets in `images/`
+
+### Completed Work
+- Product data includes `image`
+- Product cards render image, metadata, badges, and consultation CTA
+- Client-side filters and reset behavior are implemented
+- Empty-state rendering exists in the product grid flow
+
+### Must Preserve
+- Product grid
+- Client-side filter logic
+- Reset filter behavior
+
+### Verification Checks
+- Filtering updates the grid correctly
+- Reset restores all products
+- Image fallback still looks intentional if an asset fails to load
+
+## Phase 6. Upgrade Nutrition Experience
+
+### Status
+Completed
+
+### Goal
+Preserve Veggevity's strongest differentiator while making the page easier to scan and more trust-building.
+
+### Files Involved
+- `nutrition.html`
+- `script.js`
+- `styles.css`
+
+### Completed Work
+- Nutrition lookup is implemented
+- Alias matching is implemented
+- Meal suggestion tabs are implemented
+- Nutrition-related blog cards and disclaimer are implemented
+
+### Must Preserve
+- Nutrition lookup
+- Alias matching
+- Meal suggestion tabs
+
+### Verification Checks
+- Known sample inputs return the expected result structure
+- Unknown inputs show a useful fallback
+- Tab switching updates the visible suggestion list correctly
+
+## Phase 7. Upgrade Knowledge / Blog Experience
+
+### Status
+Completed
+
+### Goal
+Present Veggevity content as an editorial trust surface that supports SEO-style communication and customer education.
+
+### Files Involved
+- `blog.html`
+- `script.js`
+- `styles.css`
+
+### Completed Work
+- Blog page uses a card grid driven by shared blog data
+- Category chips are present
+- Blog cards include audience, topic, reading time, summary, and optional image support
+- CTA path back into shop and consultation exists
+
+### Must Preserve
+- Article grid
+- Blog-card metadata structure
+
+### Verification Checks
+- Blog cards render correctly from shared data
+- Blog page tone feels educational, warm, and practical rather than technical
+
+## Phase 8. Upgrade Consultation Experience
+
+### Status
+Completed
+
+### Goal
+Make consultation feel friendly and structured without pretending to be a medical or AI system.
+
+### Files Involved
+- `consultation.html`
+- `script.js`
+- `styles.css`
+
+### Completed Work
+- `Ask Veggevity` quick-question flow is present
+- Keyword-based chatbot topics are implemented
+- Structured form fields are implemented
+- localStorage history rendering is implemented
+- Prefill support from shop CTA links is implemented
+
+### Must Preserve
+- Chatbot demo
+- Structured consultation form
+- localStorage history
+- Required validation
+
+### Verification Checks
+- Expected keywords trigger the correct category of reply
+- Form submission stores data locally and renders history correctly
+- Fallback response does not overstate capability
+
+## Phase 9. Refine About / Contact Experience
+
+### Status
+Completed
+
+### Goal
+Strengthen brand trust and explain the human story behind the prototype.
+
+### Files Involved
+- `about.html`
+- `styles.css`
+
+### Completed Work
+- About page contains brand story, philosophy, values, role cards, and contact placeholders
+- Contact surface and placeholder form are present
+- Page tone and structure align with the warmer brand direction
+
+### Must Preserve
+- Brand story section
+- Philosophy and values
+- Team or role cards
+- Contact placeholders
+- Contact form placeholder
+
+### Verification Checks
+- About page supports trust-building instead of sounding like technical documentation
+- Contact section remains easy to find and scan
+
+## Phase 10. Clean Up Shared Data And Rendering Logic
+
+### Status
+Completed
+
+### Goal
+Keep the implementation maintainable without changing the static architecture.
+
+### Files Involved
+- `script.js`
+- `styles.css`
+
+### Completed Work
+- Product, nutrition, blog, and chatbot content are centralized in `script.js`
+- Shared rendering helpers are used for product and blog cards
+- Data-driven rendering is already wired into multiple pages
+
+### Must Preserve
+- Current page behavior
+- Current data-driven rendering approach
+
+### Verification Checks
+- Shared render functions still support all current page variants
+- No cleanup step breaks a page-specific rendering path
+
+## Phase 11. Run Functional QA
+
+### Status
+In Progress
+
+### Goal
+Verify that all preserved and updated prototype behaviors still work after refinement.
+
+### Files Involved
+- All live HTML files
+- `styles.css`
+- `script.js`
+
+### Pending Work
+- Test navigation links and active states across every page
+- Test homepage CTA paths
+- Test shop filters and reset behavior
+- Test nutrition lookup with preserved sample ingredients
+- Test meal suggestion tabs
+- Test blog-card rendering on all pages that use it
+- Test chatbot keyword responses and fallback response
+- Test consultation form validation, submission, localStorage persistence, and history rendering
+- Test image fallback behavior
+- Test readability and layout on mobile and desktop
+
+### Must Preserve
+- All current interactive features
+- Responsive layout
+
+### Verification Checks
+- No preserved feature regresses
+- The prototype remains understandable and stable in a browser
+
+## Phase 12. Final Content And Consistency Pass
+
+### Status
+Partially Completed
+
+### Goal
+Prepare the prototype for presentation or handoff with consistent language and scope.
+
+### Files Involved
+- All live HTML files
+- `summary.md`
+
+### Completed Work
+- Legacy platform framing has largely been removed from the live site and planning docs
+- The project now reads as a code-only static prototype rather than a WordPress migration
+
+### Remaining Work
+- Finish encoding cleanup
+- Complete QA
+- Do a last consistency pass on tone, labels, and future-scope wording after testing
+
+### Must Preserve
+- Current working site
+- Current business-facing framing
+
+### Verification Checks
+- The final prototype reads as one coherent product
+- Future ideas are clearly separated from current implementation
