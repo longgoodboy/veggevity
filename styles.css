@@ -123,13 +123,11 @@ button, input, select, textarea { font: inherit; }
 }
 
 .brand-logo {
-  width: 3.75rem;
-  height: 3.75rem;
-  object-fit: cover;
-  border-radius: 20px;
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 10px 30px rgba(95, 111, 62, 0.12);
-  background: var(--surface);
+  height: 2.75rem;
+  width: auto;
+  object-fit: contain;
+  transition: transform 180ms ease;
+  mix-blend-mode: multiply;
 }
 
 .brand-text strong,
@@ -531,7 +529,7 @@ main section,
 
 .product-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 20px;
   background:
@@ -928,6 +926,7 @@ main section,
   height: auto;
   object-fit: contain;
   margin: 0 auto;
+  mix-blend-mode: multiply;
 }
 
 .brand-center-logo.logo-cleaned,
@@ -1057,7 +1056,7 @@ main section,
 .meal-card-media {
   overflow: hidden;
   border-radius: 16px;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   border: 1px solid rgba(78, 72, 44, 0.1);
   background: #efe7d7;
 }

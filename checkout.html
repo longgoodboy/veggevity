@@ -123,6 +123,15 @@
             <button type="submit" class="button button-primary">Đặt hàng</button>
           </div>
         </form>
+
+        <div id="successMessage" class="tool-panel" style="display: none; text-align: center; padding: 3rem 2rem;">
+          <h2 style="color: var(--primary-deep); margin-bottom: 1rem;">🎉 Đặt hàng thành công!</h2>
+          <p style="color: var(--muted); margin-bottom: 2rem;">Đơn hàng của bạn đã được Veggevity ghi nhận. Chúng tôi sẽ sớm liên hệ với bạn để xác nhận thông tin giao hàng.</p>
+          <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="shop.html" class="button button-secondary">Tiếp tục mua sắm</a>
+            <a href="index.html" class="button button-primary">Về trang chủ</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -194,8 +203,8 @@
           
           localStorage.removeItem('veggevity-cart');
           
-          alert("Đặt hàng thành công! Đơn hàng của bạn đã được ghi nhận.");
-          window.location.href = 'index.html';
+          document.getElementById('checkoutForm').style.display = 'none';
+          document.getElementById('successMessage').style.display = 'block';
         };
 
         if (paymentMethod === 'QR') {

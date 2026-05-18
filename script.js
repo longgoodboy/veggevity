@@ -495,7 +495,7 @@ function setupCleanLogos() {
           continue;
         }
 
-        if (red > 224 && green > 224 && blue > 224 && spread < 26) {
+        if (red > 160 && green > 160 && blue > 160 && spread < 30) {
           data[index + 3] = 0;
         }
       }
@@ -811,7 +811,7 @@ function renderAdminOrders() {
         </select>
       </td>
       <td>
-        <button class="button button-ghost" style="padding: 0.3rem 0.6rem; min-height: auto;" onclick="alert('Chi tiết: ' + '${order.items.map(i => i.name + ' x' + i.quantity).join(', ')}')">Xem</button>
+        <button class="button button-ghost" style="padding: 0.3rem 0.6rem; min-height: auto;" onclick="showOrderDetails('${order.id}')">Xem</button>
       </td>
     </tr>
   `).join('');
@@ -824,6 +824,37 @@ window.updateOrderStatus = function(orderId, newStatus) {
     order.status = newStatus;
     localStorage.setItem('veggevity-orders', JSON.stringify(orders));
   }
+};
+
+window.showOrderDetails = function(orderId) {
+  const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
+  const order = orders.find(o => o.id === orderId);
+  if (!order) return;
+
+  const content = document.getElementById('orderDetailsContent');
+  if (!content) return;
+
+  let html = `
+    <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line);">
+      <p><strong>Mã đơn hàng:</strong> ${order.id}</p>
+      <p><strong>Ngày đặt:</strong> ${order.date}</p>
+      <p><strong>Khách hàng:</strong> ${order.customerName}</p>
+      <p><strong>SĐT:</strong> ${order.customerPhone}</p>
+      <p><strong>Địa chỉ:</strong> ${order.customerAddress}</p>
+      <p><strong>Thanh toán:</strong> ${order.paymentMethod === 'COD' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản QR'}</p>
+      <p><strong>Trạng thái:</strong> ${order.status}</p>
+    </div>
+    <h3 style="margin-top: 0;">Sản phẩm:</h3>
+    <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+      ${order.items.map(i => `<li style="margin-bottom: 0.5rem;">${i.name} <strong>x${i.quantity}</strong> - <span style="color: var(--accent);">${i.price}</span></li>`).join('')}
+    </ul>
+    <div style="text-align: right; font-size: 1.25rem;">
+      <strong>Tổng tiền: <span style="color: var(--primary-deep);">${order.total}</span></strong>
+    </div>
+  `;
+
+  content.innerHTML = html;
+  document.getElementById('orderModal').style.display = 'flex';
 };
 
 function renderAdminFeedbacks() {
