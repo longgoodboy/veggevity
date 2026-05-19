@@ -29,12 +29,6 @@
         </div>
       </div>
     </nav>
-    <section class="page-header" style="padding-bottom: 2rem;">
-      <div class="page-header-inner">
-        <span class="eyebrow">Quản trị</span>
-        <h1>Hệ thống quản lý nội bộ</h1>
-      </div>
-    </section>
   </header>
   <main>
     <section style="padding-top: 1rem;">
@@ -54,6 +48,7 @@
                   <tr>
                     <th>Mã ĐH</th>
                     <th>Ngày đặt</th>
+                    <th>Khách hàng</th>
                     <th>Tổng tiền</th>
                     <th>Trạng thái</th>
                     <th>Thao tác</th>
@@ -88,6 +83,18 @@
       </div>
     </section>
   </main>
+
+  <!-- Order Details Modal -->
+  <div id="orderModal" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(36, 37, 28, 0.8); z-index: 200; display: none; align-items: center; justify-content: center;">
+    <div class="tool-panel" style="max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative;">
+      <button onclick="document.getElementById('orderModal').style.display='none'" style="position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted);">&times;</button>
+      <h2 style="margin-top: 0; color: var(--primary-deep);">Chi tiết đơn hàng</h2>
+      <div id="orderDetailsContent" style="margin-top: 1rem;">
+        <!-- Order details populated via JS -->
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

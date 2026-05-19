@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thông tin cá nhân | Veggevity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .profile-layout {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a class="brand-mark" href="index.html">
+          <img class="brand-logo" src="images/logo.png" alt="Logo Veggevity" />
+          <div class="brand-text">
+            <strong>Veggevity</strong>
+            <span>Hồ sơ cá nhân</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Về trang chủ</a>
+          <a href="shop.html">Cửa hàng</a>
+        </div>
+      </div>
+    </nav>
+    <section class="page-header" style="padding-bottom: 1rem;">
+      <div class="page-header-inner" style="max-width: 600px; margin: 0 auto;">
+        <h1>Thông tin cá nhân</h1>
+        <p>Quản lý thông tin liên hệ và địa chỉ giao hàng của bạn.</p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section style="padding-top: 1rem; padding-bottom: 5rem;">
+      <div class="container profile-layout">
+        <form id="profileForm" class="tool-panel">
+          <div class="field">
+            <label for="profileName">Họ và Tên</label>
+            <input type="text" id="profileName" name="name" value="Khách hàng Veggevity" />
+          </div>
+          <div class="field">
+            <label for="profileEmail">Email</label>
+            <input type="email" id="profileEmail" name="email" value="customer@veggevity.vn" />
+          </div>
+          <div class="field">
+            <label for="profilePhone">Số điện thoại</label>
+            <input type="tel" id="profilePhone" name="phone" value="0909888120" />
+          </div>
+          <div class="field">
+            <label for="profileAddress">Địa chỉ mặc định</label>
+            <textarea id="profileAddress" name="address" rows="3">TP. Hồ Chí Minh</textarea>
+          </div>
+
+          <div style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+            <button type="button" class="button button-primary" onclick="alert('Đã lưu thông tin!')">Lưu thay đổi</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

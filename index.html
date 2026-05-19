@@ -33,7 +33,28 @@
           <a href="consultation.html">Tư vấn</a>
           <a href="about.html">Về Veggevity</a>
         </div>
-        <a class="nav-cta" href="consultation.html">Hỏi Veggevity</a>
+        <div class="nav-actions">
+          <button id="openCartBtn" class="nav-icon-btn">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+              </path>
+            </svg>
+            <span id="cartBadge" class="cart-count">0</span>
+          </button>
+          <div class="user-dropdown">
+            <button class="nav-icon-btn user-btn">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="myorder.html">Đơn hàng của tôi</a>
+              <a href="profile.html">Thông tin cá nhân</a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -142,7 +163,7 @@
     </section>
 
     <section>
-      <div class="section-grid">
+      <div class="section-grid stacked">
         <div class="section-copy reveal">
           <div class="section-badge">Starter Guide</div>
           <h2>Veggevity giúp bạn đi từ bối rối sang lựa chọn rõ ràng hơn.</h2>
@@ -169,7 +190,7 @@
     </section>
 
     <section>
-      <div class="section-grid">
+      <div class="section-grid stacked">
         <div class="section-copy reveal">
           <div class="section-badge">Why Veggevity</div>
           <h2>Một thương hiệu chay không chỉ bán món, mà còn bán sự yên tâm.</h2>
@@ -239,12 +260,7 @@
           </form>
         </div>
         <figure class="story-frame reveal">
-          <img src="images/logo.png" alt="Logo Veggevity theo phong cách botanical vintage" />
-          <figcaption>
-            Tông màu giấy ấm, xanh olive và chi tiết cổ điển giúp website mang cảm giác cẩm nang nấu ăn hơn là một giao
-            diện bán hàng khô cứng.
-          </figcaption>
-        </figure>
+          <img src="images/logo.png" alt="Logo Veggevity theo phong cách botanical vintage" data-clean-logo />
       </div>
     </section>
 
@@ -319,7 +335,7 @@
         <div>
           <strong>Điều hướng</strong>
           <a href="shop.html">Cửa hàng</a><br />
-          <a href="nutrition.html">Dinh dưỡng Kiến thức</a><br />
+          <a href="nutrition.html">Dinh dưỡng</a><br />
           <a href="consultation.html">Tư vấn</a>
         </div>
         <div>

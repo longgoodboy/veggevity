@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dinh dưỡng Kiến thức | Veggevity</title>
+    <title>Dinh dưỡng | Veggevity</title>
     <meta name="description" content="Tra cứu nhanh protein, B12, canxi và sắt trong một số nguyên liệu chay quen thuộc, cùng gợi ý thực đơn theo nhu cầu." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,12 +15,7 @@
   </head>
   <body>
     <header>
-      <div class="utility-bar">
-        <div class="utility-inner">
-          <div><span class="utility-chip">Protein · B12 · Canxi · Sắt</span></div>
-          <div><span class="utility-chip">Giải thích ngắn gọn</span><span class="utility-chip">CTA mềm</span></div>
-        </div>
-      </div>
+
       <nav class="site-nav">
         <div class="nav-inner">
           <a class="brand-mark" href="index.html">
@@ -33,22 +28,27 @@
           <div class="nav-links">
             <a href="index.html">Trang chủ</a>
             <a href="shop.html">Cửa hàng</a>
-            <a class="active" href="nutrition.html">Dinh dưỡng Kiến thức</a>
+            <a class="active" href="nutrition.html">Dinh dưỡng</a>
             <a href="consultation.html">Tư vấn</a>
             <a href="about.html">Về Veggevity</a>
           </div>
-          <a class="nav-cta" href="consultation.html">Hỏi một câu dinh dưỡng</a>
+          <div class="nav-actions">
+            <button id="openCartBtn" class="nav-icon-btn">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              <span id="cartBadge" class="cart-count">0</span>
+            </button>
+            <div class="user-dropdown">
+              <button class="nav-icon-btn user-btn">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+              </button>
+              <div class="dropdown-menu">
+                <a href="myorder.html">Đơn hàng của tôi</a>
+                <a href="profile.html">Thông tin cá nhân</a>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
-      <section class="page-header">
-        <div class="page-header-inner">
-          <span class="eyebrow">Nutrition Guide</span>
-          <h1>Dinh dưỡng là nơi Veggevity tạo ra khác biệt.</h1>
-          <p>
-            Trang này giúp người dùng đọc nhanh một vài nguyên liệu phổ biến, hiểu điều quan trọng nhất trong khẩu phần và chuyển tiếp sang món ăn hoặc tư vấn khi cần rõ hơn.
-          </p>
-        </div>
-      </section>
     </header>
     <main>
       <section>

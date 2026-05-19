@@ -22,7 +22,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 18px; }
 
 body {
   margin: 0;
@@ -123,13 +123,11 @@ button, input, select, textarea { font: inherit; }
 }
 
 .brand-logo {
-  width: 3.75rem;
-  height: 3.75rem;
-  object-fit: cover;
-  border-radius: 20px;
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 10px 30px rgba(95, 111, 62, 0.12);
-  background: var(--surface);
+  height: 2.75rem;
+  width: auto;
+  object-fit: contain;
+  transition: transform 180ms ease;
+  mix-blend-mode: multiply;
 }
 
 .brand-text strong,
@@ -204,7 +202,7 @@ h3,
   cursor: pointer;
   transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
   font-family: "Inter", system-ui, sans-serif;
-  font-size: 0.95rem;
+  font-size: 15.2px;
   font-weight: 600;
 }
 
@@ -390,8 +388,17 @@ main section,
   align-items: start;
 }
 
+.section-grid.stacked {
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
 .section-copy { grid-column: span 5; }
 .section-aside { grid-column: span 7; }
+.story-frame { grid-column: span 7; }
+
+.section-grid.stacked .section-copy { grid-column: auto; max-width: 800px; }
+.section-grid.stacked .section-aside { grid-column: auto; }
 
 .section-badge {
   display: inline-flex;
@@ -531,7 +538,7 @@ main section,
 
 .product-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 20px;
   background:
@@ -620,18 +627,25 @@ main section,
 .shop-layout,
 .nutrition-layout,
 .consult-layout,
-.about-layout,
-.contact-layout {
+.about-layout {
   display: grid;
   gap: 1.25rem;
   align-items: start;
 }
 
+.contact-layout {
+  display: flex;
+  justify-content: center;
+}
+.contact-layout .contact-panel {
+  width: 100%;
+  max-width: 600px;
+}
+
 .shop-layout { grid-template-columns: 320px 1fr; }
 .nutrition-layout,
 .consult-layout,
-.about-layout,
-.contact-layout { grid-template-columns: 1.08fr 0.92fr; }
+.about-layout { grid-template-columns: 1.08fr 0.92fr; }
 
 .field {
   display: grid;
@@ -928,6 +942,7 @@ main section,
   height: auto;
   object-fit: contain;
   margin: 0 auto;
+  mix-blend-mode: multiply;
 }
 
 .brand-center-logo.logo-cleaned,
@@ -987,6 +1002,125 @@ main section,
 .meal-slider-controls {
   display: inline-flex;
   gap: 0.5rem;
+}
+
+.meal-slider-butto.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 180ms ease, transform 180ms ease;
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: var(--primary-deep);
+  transform: translateY(-1px);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary-deep);
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.nav-icon-btn:hover {
+  background: rgba(95, 111, 62, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-icon-btn svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--accent);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  width: 1.1rem;
+  height: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transform: translate(20%, -20%);
+  pointer-events: none;
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 180ms ease;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.user-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  padding: 0.75rem 1.25rem;
+  color: var(--primary-deep);
+  text-decoration: none;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--line);
+  transition: background-color 180ms ease;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background: var(--surface-sage);
 }
 
 .meal-slider-button {
@@ -1057,7 +1191,7 @@ main section,
 .meal-card-media {
   overflow: hidden;
   border-radius: 16px;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   border: 1px solid rgba(78, 72, 44, 0.1);
   background: #efe7d7;
 }
