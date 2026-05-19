@@ -163,7 +163,7 @@
 
       let totalPrice = 0;
       cart.forEach(item => {
-        const priceNum = parseInt(item.price.replace(/\\D/g, ''));
+        const priceNum = parseInt(item.price.replace(/\D/g, ''));
         totalPrice += priceNum * item.quantity;
       });
       document.getElementById('checkoutTotal').textContent = totalPrice.toLocaleString('vi-VN') + 'đ';

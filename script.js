@@ -137,32 +137,32 @@ const mealSuggestions = {
 const blogPosts = [
   {
     id: 1,
-    title: "Vitamin B12 trong chế độ ăn chay: vì sao cần theo dõi đều đặn?",
-    audience: "Ăn chay trường",
-    topic: "B12 và vi chất",
-    time: "6 phút đọc",
-    image: "images/2.1 chuối sấy.png",
-    summary: "Một khung theo dõi đơn giản để biết khi nào nên ưu tiên thực phẩm tăng cường hoặc hỏi thêm chuyên gia.",
+    title: "Ăn chay đúng cách cho người cao tuổi: Nguyên tắc cần nhớ",
+    audience: "Người cao tuổi",
+    topic: "Nguyên tắc ăn chay",
+    time: "5 phút đọc",
+    image: "https://i.pinimg.com/736x/ca/70/5b/ca705bdf8823d11b2a50806dc873462a.jpg",
+    summary: "Ăn chay đúng cách có thể mang lại nhiều lợi ích cho người cao tuổi, nhưng chỉ thật sự tốt khi bữa ăn được xây dựng cân bằng, đa dạng và đủ vi chất.",
     content: ""
   },
   {
     id: 2,
-    title: "Bữa sáng mềm cho người lớn tuổi: bắt đầu ngày mới nhẹ bụng mà vẫn đủ chất",
+    title: "Vitamin B12 trong chế độ ăn chay: Vì sao người già cần đặc biệt chú ý",
     audience: "Người cao tuổi",
-    topic: "Công thức và gợi ý món",
-    time: "4 phút đọc",
-    image: "images/4. Cháo & Ngũ cốc ăn liền.png",
-    summary: "Gợi ý các bữa sáng ít dầu, dễ nhai và có thể linh hoạt theo khẩu vị của gia đình.",
+    topic: "B12 và vi chất",
+    time: "6 phút đọc",
+    image: "https://i.pinimg.com/1200x/a1/24/25/a124251a5f7e44840996f2c102e66211.jpg",
+    summary: "Vitamin B12 là vi chất rất quan trọng cho máu và hệ thần kinh, nhưng lại là chất mà người ăn chay dễ bị thiếu nếu không biết cách bổ sung.",
     content: ""
   },
   {
     id: 3,
-    title: "Ăn chay và sức khỏe xương: nên ưu tiên thực phẩm nào mỗi tuần?",
-    audience: "Hỗ trợ xương",
-    topic: "Canxi và xương",
-    time: "5 phút đọc",
-    image: "images/3. Món ăn chay dinh dưỡng.png",
-    summary: "Tổng hợp ngắn gọn về canxi, vitamin D, protein và thói quen ăn uống giúp bữa chay rõ ràng hơn.",
+    title: "Thiếu sắt ở người ăn chay: Cách ăn để hấp thu tốt hơn",
+    audience: "Người ăn chay",
+    topic: "Sắt và tạo máu",
+    time: "4 phút đọc",
+    image: "https://i.pinimg.com/1200x/5d/bc/9e/5dbc9efba2cfb8bee5eaf43745e4943f.jpg",
+    summary: "Sắt là khoáng chất cần thiết cho quá trình tạo máu và vận chuyển oxy trong cơ thể. Người ăn chay vẫn có thể nhận đủ sắt nếu biết chọn thực phẩm đúng và kết hợp bữa ăn hợp lý để tăng hấp thu.",
     content: ""
   },
   {
@@ -596,7 +596,7 @@ function createBlogCard(post) {
       <strong>${post.title}</strong>
       <div class="article-meta">${post.time}</div>
       <p>${post.summary}</p>
-      <a class="button button-secondary" href="consultation.html">Đọc tiếp cùng Veggevity</a>
+      <a class="button button-secondary" href="blog${post.id}.html">Đọc tiếp cùng Veggevity</a>
     </article>
   `;
 }
@@ -661,10 +661,10 @@ function addToCart(productId) {
   } else {
     cart.push({ ...product, quantity: 1 });
   }
-  
+
   saveCart();
   updateCartUI();
-  
+
   document.getElementById('cartOverlay')?.classList.add('open');
 }
 
@@ -690,7 +690,7 @@ function updateCartUI() {
   const badge = document.getElementById('cartBadge');
   const container = document.getElementById('cartItemsContainer');
   const totalEl = document.getElementById('cartTotalPrice');
-  
+
   if (!badge) return;
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -705,7 +705,7 @@ function updateCartUI() {
 
     let totalPrice = 0;
     container.innerHTML = cart.map(item => {
-      const priceNum = parseInt(item.price.replace(/\\D/g, ''));
+      const priceNum = parseInt(item.price.replace(/\D/g, ''));
       totalPrice += priceNum * item.quantity;
       return `
         <div class="cart-item">
@@ -729,6 +729,30 @@ function updateCartUI() {
 }
 
 function setupCart() {
+  if (!document.getElementById('cartOverlay')) {
+    const cartHTML = `
+      <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-panel">
+          <div class="cart-header">
+            <h2>Giỏ hàng của bạn</h2>
+            <button class="cart-close" id="closeCartBtn">&times;</button>
+          </div>
+          <div class="cart-body" id="cartItemsContainer">
+            <!-- Cart items will be rendered here -->
+          </div>
+          <div class="cart-footer">
+            <div class="cart-total">
+              <span>Tổng cộng:</span>
+              <span id="cartTotalPrice">0đ</span>
+            </div>
+            <button class="button button-primary" style="width: 100%;" id="checkoutBtn">Thanh toán</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', cartHTML);
+  }
+
   const openBtn = document.getElementById('openCartBtn');
   const closeBtn = document.getElementById('closeCartBtn');
   const overlay = document.getElementById('cartOverlay');
@@ -737,7 +761,7 @@ function setupCart() {
   if (openBtn && overlay) {
     openBtn.addEventListener('click', () => overlay.classList.add('open'));
   }
-  
+
   if (closeBtn && overlay) {
     closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
   }
@@ -772,7 +796,7 @@ function setupAdmin() {
     tab.addEventListener('click', () => {
       adminTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      
+
       document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active'));
       const targetId = tab.dataset.adminTab === 'orders' ? 'adminOrders' : 'adminFeedbacks';
       document.getElementById(targetId).classList.add('active');
@@ -788,7 +812,7 @@ function renderAdminOrders() {
   if (!tbody) return;
 
   const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
-  
+
   if (orders.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted);">Chưa có đơn hàng nào</td></tr>';
     return;
@@ -818,7 +842,7 @@ function renderAdminOrders() {
   `).join('');
 }
 
-window.updateOrderStatus = function(orderId, newStatus) {
+window.updateOrderStatus = function (orderId, newStatus) {
   const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
   const order = orders.find(o => o.id === orderId);
   if (order) {
@@ -827,7 +851,7 @@ window.updateOrderStatus = function(orderId, newStatus) {
   }
 };
 
-window.showOrderDetails = function(orderId) {
+window.showOrderDetails = function (orderId) {
   const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
   const order = orders.find(o => o.id === orderId);
   if (!order) return;
@@ -863,7 +887,7 @@ function renderAdminFeedbacks() {
   if (!tbody) return;
 
   const feedbacks = JSON.parse(localStorage.getItem('veggevity-consult-history')) || [];
-  
+
   if (feedbacks.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--muted);">Chưa có yêu cầu tư vấn nào</td></tr>';
     return;
@@ -888,7 +912,7 @@ function setupCustomerOrders() {
   if (!tbody) return;
 
   const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
-  
+
   if (orders.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--muted);">Bạn chưa có đơn hàng nào.</td></tr>';
     return;
@@ -909,7 +933,7 @@ function setupCustomerOrders() {
   `).join('');
 }
 
-window.showCustomerOrderDetails = function(orderId) {
+window.showCustomerOrderDetails = function (orderId) {
   const orders = JSON.parse(localStorage.getItem('veggevity-orders')) || [];
   const order = orders.find(o => o.id === orderId);
   if (!order) return;
